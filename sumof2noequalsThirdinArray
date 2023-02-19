@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+int tn,test[10],n,*p,sum,i,j,k;
+printf("Enter number of cases:");
+scanf("%d",&tn);
+p=test;
+p=(int*)malloc(tn*sizeof(int));
+p=NULL;
+while(tn){
+    
+    printf("\nNew Aray\nEnter number of elements");
+    scanf("%d",&n);
+    printf("Enter sorted array");
+    p=(int*)malloc(n*sizeof(int));
+    for(i=0;i<n;i++){
+        scanf("%d",(p+i));
+    }
+    for(i=0;i<n;i++){
+        for(j=i+1;j<n;j++){
+            sum=*(p+i)+*(p+j);
+            for(k=j+1;k<n;k++){
+                if(sum==*(p+k))
+                    break;
+            }
+            if(k!=n)
+            break;
+        }
+        if(j!=n)
+            break;
+    }
+    if(i==n)
+    printf("\nNo such pair present");
+    else{
+    printf(" \n Pair present at positions i=%d\tj=%d\tk=%d",i+1,j+1,k+1);
+    }
+    free(p);
+    tn--;
+}
+}
+
