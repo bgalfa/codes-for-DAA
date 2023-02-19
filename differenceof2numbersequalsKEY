@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<stdlib.h>
+int search(int*p,int lb,int ub,int key);
+int dupli(int*p,int n,int i);
+int main(){
+int tn,test[10],n,*p,sum,i,j,key,count_of_pairs;
+printf("Enter number of cases:");
+scanf("%d",&tn);
+p=test;
+p=(int*)malloc(tn*sizeof(int));
+p=NULL;
+while(tn){
+    count_of_pairs=0;
+    printf("\nNew Aray\nEnter number of elements");
+    scanf("%d",&n);
+    printf("Enter array");
+    p=(int*)malloc(n*sizeof(int));
+    for(i=0;i<n;i++){
+        scanf("%d",(p+i));
+    }
+    printf("\nEnter key ");
+    scanf("%d",&key);
+    for(i=n-1;i>-1;i--){
+        for(j=n-1;j>-1;j--){//Iteration from the end!
+            if((*(p+i)-*(p+j))==key)
+                count_of_pairs++;
+        }
+    }
+    if(count_of_pairs==0)
+    printf("\nNo such pair present");
+    else{
+    printf(" \n no of pairs:%d",count_of_pairs);
+    }
+    free(p);
+    tn--;
+}
+}
+
