@@ -1,7 +1,5 @@
 #include<stdio.h>
 #include<stdlib.h>
-int search(int*p,int lb,int ub,int key);
-int dupli(int*p,int n,int i);
 int main(){
 int tn,test[10],n,*p,sum,i,j,key,count_of_pairs;
 printf("Enter number of cases:");
