@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void reverse(int[],int,int);
+void swap(int*,int *);
+void display(int a[],int n){
+    for(int i=1;i<=n;i++)
+        printf("%d \t",a[i]);
+    printf("\n");
+}
+int main(){
+    int n,i,j,k;
+    printf("Enter numbers of elemnts in array : ");
+    scanf("%d",&n);
+    int arr[n+1];
+    printf("\nEnter elements of array : \n");
+    for(i=1;i<=n;i++){
+        scanf("%d",&arr[i]);
+    }
+    display(arr,n);
+    printf("Enter key value:");
+    scanf("%d",&k);
+    reverse(arr,n,k);
+    printf("\nAfter reversing :");
+    display(arr,n);
+}
+void swap(int *p,int *q){
+    int t=*p;
+    *p=*q;
+    *q=t;
+}
+
+void reverse(int a[],int n,int key){
+    int K=0,i=1,j,l;
+    while(i<=n){
+        K=K+key;
+        if(K>n)
+            K=n;
+        for(j=i,l=K;j<l;j++,l--){
+            swap(&a[j],&a[l]);
+        }
+        
+        i=K+1;
+    }
+}
+
+
