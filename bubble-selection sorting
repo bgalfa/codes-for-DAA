@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+class Sorting{
+    public:
+    void Bubble(int a[],int n,int*comp,int*s){
+        int c=0,t;
+        for(int i=0;i<n;i++)
+        {
+            c=0;
+            for(int j=i;j<n;j++)
+            {
+                if(a[i]>a[j])
+                {
+                    swap(&a[i],&a[j]);
+                    (*s)++;
+                    c++;
+                }
+                (*comp)++;
+            }
+            if(c==0)
+                break;
+        }
+    }
+    void swap(int*a,int*b){
+        int t=*a;
+        *a=*b;
+        *b=t;
+    }
+    void print(int arr[],int n,int x){
+        if(x==0)
+            cout<<"Befor swapping:\t";
+        else
+            cout<<"After swapping:\t";
+        for(int i=0;i<n;i++){
+            cout<<arr[i]<<"\t";
+        }
+        cout<<"\n";
+    }
+    void Selection(int a[],int n,int*comp,int*s){
+        int i,j,min;
+        for(i=0;i<n;i++)
+        {
+            min=i;
+            for(j=i+1;j<n;j++)
+            {
+                if(a[min]>a[j])
+                    min=j;
+                (*comp)++;
+            }
+            swap(&a[i],&a[min]);
+            (*s)++;
+        }
+    }
+};
+int main(){
+    int a[]={4,9,6,5,3,8,2},b[]={8,9,6,5,4,2,9,3};
+    int n=sizeof(a)/sizeof(a[0]),m=sizeof(b)/sizeof(b[0]),ncomp=0,nswap=0;
+    Sorting bbl,sel;
+    
+    cout<<"Bubble Sort:\n";
+    bbl.print(a,n,0);
+    bbl.Bubble(a,n,&ncomp,&nswap);
+    bbl.print(a,n,1);
+    cout<<"No of comparisions:"<<ncomp<<"\nNo of swaps:"<<nswap;
+    
+    ncomp=nswap=0;
+    
+    cout<<"Selection Sort:\n";
+    sel.print(b,m,0);
+    sel.Selection(b,m,&ncomp,&nswap);
+    sel.print(b,m,1);
+    cout<<"No of comparisions:"<<ncomp<<"\nNo of swaps:"<<nswap;
+    
+    return 0;
+}
